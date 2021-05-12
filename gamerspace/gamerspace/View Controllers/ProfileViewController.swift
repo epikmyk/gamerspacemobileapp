@@ -86,8 +86,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.configure(with: models[indexPath.row - 1], with: htmlImages)
             }
             cell.delegate = self
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
+            //cell.setNeedsLayout()
+           // cell.layoutIfNeeded()
             return cell
         }
     }
@@ -170,6 +170,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for (index, post) in posts.enumerated() {
                     self.models.append(gamerspacePost(username: post.username, post: post.post, index: index, hasImage: false, imageIndex: 0))
                 }
+                self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
+                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
+                self.table.delegate = self
+                self.table.dataSource = self
+                self.table.setNeedsLayout()
+                self.table.layoutIfNeeded()
+                self.table.reloadData()
                 self.updateFavoriteGames()
                 
             }
@@ -221,7 +228,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
             }
-          //  self.updateFavoriteGames()
         }
     }
     func updateFavoriteGames() -> Void {
@@ -242,14 +248,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
                 self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
-                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
-                self.table.delegate = self
-                self.table.dataSource = self
-                self.table.setNeedsLayout()
-                self.table.layoutIfNeeded()
                 self.table.reloadData()
-               // self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
-               // self.table.reloadData()
             }
         }
     }
