@@ -72,6 +72,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileGamesTableViewCell.identifier, for: indexPath) as! UserProfileGamesTableViewCell
             cell.configure(with: gameModels)
+            if loggedInUsername != profileModel.username {
+                cell.addGamesButton.isHidden = true
+            }
+            else {
+                cell.addGamesButton.isHidden = false
+            }
             cell.delegate = self
             
             return cell

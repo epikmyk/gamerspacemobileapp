@@ -65,6 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addGamesButton" destination="1xQ-jp-fwv" id="bWE-9a-uWP"/>
                 <outlet property="collectionView" destination="7Jj-RY-q4c" id="UHq-vt-YUT"/>
             </connections>
             <point key="canvasLocation" x="28" y="142"/>

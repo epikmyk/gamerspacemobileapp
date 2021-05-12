@@ -29,6 +29,7 @@ class UserProfileGamesTableViewCell: UITableViewCell, UICollectionViewDelegate, 
         
     }
     
+    @IBOutlet weak var addGamesButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     @IBAction func addGames(_ sender: UIButton) {
         print("add games")
