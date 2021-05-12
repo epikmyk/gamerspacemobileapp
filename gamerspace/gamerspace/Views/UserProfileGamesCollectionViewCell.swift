@@ -39,13 +39,10 @@ class UserProfileGamesCollectionViewCell: UICollectionViewCell {
     
     public func configure(with model: GameModel) {
         self.gameNameLabel.text = model.text
-       // self.gameImage.image = UIImage(named: model.image)
         let imageURL = URL(string: model.image)
         if let image:URL = imageURL {
             downloadImage(from: image)
         }
-        
-        //downloadImage(from: model.image)
     }
 
 }

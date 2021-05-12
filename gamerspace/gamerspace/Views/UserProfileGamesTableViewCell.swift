@@ -22,8 +22,11 @@ class UserProfileGamesTableViewCell: UITableViewCell, UICollectionViewDelegate, 
     }
     
     func configure(with models: [GameModel]) {
-        self.models = models
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.models = models
+            self.collectionView.reloadData()
+        }
+        
     }
     
     @IBOutlet var collectionView: UICollectionView!
@@ -59,6 +62,10 @@ class UserProfileGamesTableViewCell: UITableViewCell, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserProfileGamesCollectionViewCell.identifier, for: indexPath) as! UserProfileGamesCollectionViewCell
         cell.configure(with: models[indexPath.row])
+       // cell.delegate = self
+     
+        
+        
         
         return cell
     }

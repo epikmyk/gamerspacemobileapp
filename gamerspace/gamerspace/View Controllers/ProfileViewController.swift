@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadUserProfile(with: self.profileModel.username)
         updatePosts()
         updateButtons()
+        //updateFavoriteGames()
     }
     
     let userData = UserResponses()
@@ -176,7 +177,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.table.dataSource = self
                 self.table.setNeedsLayout()
                 self.table.layoutIfNeeded()
-                self.table.reloadData()
+                //self.table.reloadData()
                 self.updateFavoriteGames()
                 
             }
@@ -243,7 +244,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let slug = game.slug
                     
                     {
-                        print(slug)
+                        //print(slug)
+                        print(image)
                         self.gameModels.append(GameModel(slug: slug, text: name, image: image))
                     }
                 }
