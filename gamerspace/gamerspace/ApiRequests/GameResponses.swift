@@ -118,8 +118,8 @@ struct GameResponses {
         task.resume()
     }
     
-    func getFavoriteGames(user_id: Int, completionHander: @escaping ([GameDetail]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/games/getFavoriteGames/\(user_id)")
+    func getFavoriteGames(username: String, completionHander: @escaping ([GameDetail]) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/games/getFavoriteGames/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         //request.addValue("Client-ID: 4zqb31s928lpqyh3c9j75a0ggaezy4", forHTTPHeaderField: "application/vnd.twitchtv.v5+json")

@@ -8,6 +8,37 @@
 import Foundation
 
 struct FriendResponses {
+    
+    func getFriends(completionHander: @escaping ([User]) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/friends/getFriends")
+        guard let requestUrl = url else { fatalError()}
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check for errors
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            // Get HTTP Response
+            if let data = data {
+                
+                let decoder = JSONDecoder()
+                
+                do {
+                    let response = try decoder.decode([User].self, from: data)
+                    completionHander(response)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func getFriendStatus(username: String, friendUsername: String, completionHander: @escaping (Friend) -> Void) {
         print("USER IS \(username)")
         print("WE MADE it here \(friendUsername)")

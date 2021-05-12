@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserProfileGamesTableViewCellDelegate {
-    func loadGames(with name: String)
+    func loadGames()
 }
 
 class UserProfileGamesTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -29,6 +29,7 @@ class UserProfileGamesTableViewCell: UITableViewCell, UICollectionViewDelegate, 
     @IBOutlet var collectionView: UICollectionView!
     @IBAction func addGames(_ sender: UIButton) {
         print("add games")
+        delegate?.loadGames()
     }
     
     var models = [GameModel]()

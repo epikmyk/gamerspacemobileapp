@@ -28,6 +28,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(FriendConfirmation)
         }
     }
+    @IBAction func reloadProfile(_ sender: UIButton) {
+        self.profileModel.username = self.loggedInUsername
+        loadUserProfile(with: self.profileModel.username)
+        updatePosts()
+        updateButtons()
+    }
+    
     let userData = UserResponses()
     let postData = PostResponses()
     let friendData = FriendResponses()
@@ -79,6 +86,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.configure(with: models[indexPath.row - 1], with: htmlImages)
             }
             cell.delegate = self
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
             return cell
         }
     }
@@ -161,13 +170,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for (index, post) in posts.enumerated() {
                     self.models.append(gamerspacePost(username: post.username, post: post.post, index: index, hasImage: false, imageIndex: 0))
                 }
-                self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
-                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
-                self.table.delegate = self
-                self.table.dataSource = self
-                self.table.setNeedsLayout()
-                self.table.layoutIfNeeded()
-                self.table.reloadData()
+                self.updateFavoriteGames()
+                
             }
         }
     }
@@ -217,12 +221,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
             }
-            self.updateFavoriteGames()
+          //  self.updateFavoriteGames()
         }
     }
     func updateFavoriteGames() -> Void {
-        gameData.getFavoriteGames(user_id: self.profileModel.user_id) {(Games) in
+        print("USER ID RIGHT NOW IS: \(self.profileModel.user_id)")
+        print("USEENAME RIGHT NOW IS: \(self.profileModel.username)")
+        gameData.getFavoriteGames(username: self.profileModel.username) {(Games) in
             DispatchQueue.main.async {
+                self.gameModels.removeAll()
                 for game in Games {
                     if
                         let image = game.background_image,
@@ -235,7 +242,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
                 self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
+                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
+                self.table.delegate = self
+                self.table.dataSource = self
+                self.table.setNeedsLayout()
+                self.table.layoutIfNeeded()
                 self.table.reloadData()
+               // self.table.register(UserProfileGamesTableViewCell.nib(), forCellReuseIdentifier: UserProfileGamesTableViewCell.identifier)
+               // self.table.reloadData()
             }
         }
     }
@@ -265,6 +279,7 @@ extension ProfileViewController: PostTableViewCellDelegate {
             }
             updatePosts()
             updateButtons()
+            
         }
         self.userData.getUser(username: self.profileModel.username) { (User) in
             self.profileModel.user_id = User.user_id
@@ -273,7 +288,10 @@ extension ProfileViewController: PostTableViewCellDelegate {
 }
 
 extension ProfileViewController: UserProfileGamesTableViewCellDelegate {
-    func loadGames(with name: String) {
-        //do something
+    func loadGames() {
+        print("add some games")
+        self.performSegue(withIdentifier: "AddGamesViewController", sender: nil)
     }
+    
+  
 }

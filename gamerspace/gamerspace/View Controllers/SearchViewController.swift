@@ -98,9 +98,5 @@ extension SearchViewController: SearchResultsTableViewCellDelegate {
         self.user_id = user_id
         self.performSegue(withIdentifier: "ProfileViewController", sender: self.username)
     }
-    
-   
-    
-    
 }
 

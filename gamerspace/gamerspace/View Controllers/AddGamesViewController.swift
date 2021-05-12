@@ -17,6 +17,7 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
     let gameData = GameResponses()
     var cellOverlay = [Bool]()
 
+    @IBOutlet weak var addFavoriteGamesButton: UIButton!
     @IBAction func addFavoriteGames(_ sender: UIButton) {
         let group = DispatchGroup()
         for games in self.favoriteGames {
@@ -90,6 +91,8 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
         let layout = UICollectionViewFlowLayout()
         let screenSize: CGRect = UIScreen.main.bounds
         layout.itemSize = CGSize(width: screenSize.width / 2.5, height: 120)
+        addFavoriteGamesButton.layer.cornerRadius = 5
+        addFavoriteGamesButton.layer.masksToBounds = true
         collectionView.collectionViewLayout = layout
         collectionView.register(AddGamesCollectionViewCell.nib(), forCellWithReuseIdentifier: AddGamesCollectionViewCell.identifier)
         collectionView.delegate = self
@@ -127,6 +130,7 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
                 gameData.search(searchTerm: search) { (Response) in
                     DispatchQueue.main.async {
                         self.models.removeAll()
+                        self.cellOverlay.removeAll()
                         for game in Response.results {
                             if
                                 let image = game.background_image,
@@ -148,3 +152,4 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
         return true
     }
 }
+
