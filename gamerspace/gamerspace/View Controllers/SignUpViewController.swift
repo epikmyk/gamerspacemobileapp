@@ -38,25 +38,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         password.delegate = self
         
-        email.layer.cornerRadius = 25
+        email.layer.cornerRadius = 20
         email.layer.borderWidth = 1
         email.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
         email.borderStyle = UITextField.BorderStyle.none
         email.layer.borderColor = UIColor.systemGray5.cgColor
         
-        username.layer.cornerRadius = 25
+        username.layer.cornerRadius = 20
         username.layer.borderWidth = 1
         username.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
         username.borderStyle = UITextField.BorderStyle.none
         username.layer.borderColor = UIColor.systemGray5.cgColor
         
-        password.layer.cornerRadius = 25
+        password.layer.cornerRadius = 20
         password.layer.borderWidth = 1
         password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
         password.borderStyle = UITextField.BorderStyle.none
         password.layer.borderColor = UIColor.systemGray5.cgColor
 
-        signUpButton.layer.cornerRadius = 25
+        signUpButton.layer.cornerRadius = 20
         signUpButton.layer.masksToBounds = false
         signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         

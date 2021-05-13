@@ -31,20 +31,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         backgroundGradientView.layer.addSublayer(gradientLayer)
         
-        username.layer.cornerRadius = 25
+        username.layer.cornerRadius = 20
         username.layer.borderWidth = 1
         username.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
         username.borderStyle = UITextField.BorderStyle.none
         username.layer.borderColor = UIColor.systemGray5.cgColor
         
-        password.layer.cornerRadius = 25
+        password.layer.cornerRadius = 20
         password.layer.borderWidth = 1
         password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
         password.borderStyle = UITextField.BorderStyle.none
         password.layer.borderColor = UIColor.systemGray5.cgColor
         password.delegate = self
         
-        logInButton.layer.cornerRadius = 25
+        logInButton.layer.cornerRadius = 20
         logInButton.layer.masksToBounds = false
         logInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         
