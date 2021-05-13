@@ -463,7 +463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76d-y4-dlz">
-                                <rect key="frame" x="100" y="133" width="214" height="20"/>
+                                <rect key="frame" x="100" y="89" width="214" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="D51-8i-JPh"/>
                                 </constraints>
@@ -472,7 +472,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sX-c0-hNl">
-                                <rect key="frame" x="25" y="113" width="50" height="50"/>
+                                <rect key="frame" x="25" y="69" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="8DZ-r9-9FC"/>
                                     <constraint firstAttribute="height" constant="50" id="lL2-wV-LZQ"/>
@@ -487,7 +487,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hA-yY-KpY">
-                                <rect key="frame" x="339" y="113" width="50" height="50"/>
+                                <rect key="frame" x="339" y="69" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7Mg-Js-geP"/>
                                     <constraint firstAttribute="width" constant="50" id="vk3-qW-pEq"/>
@@ -509,7 +509,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.58259034160000001" blue="0.70864278079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" image="house" catalog="system"/>
+                                <state key="normal" image="house.fill" catalog="system"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccR-Ur-KrQ">
                                 <rect key="frame" x="107" y="812" width="60" height="50"/>
@@ -559,7 +559,7 @@
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 <state key="normal" image="person.circle" catalog="system"/>
                                 <connections>
-                                    <segue destination="kb3-4J-vAe" kind="presentation" identifier="ProfileViewController" modalPresentationStyle="fullScreen" id="YgF-ty-D1f"/>
+                                    <segue destination="kb3-4J-vAe" kind="presentation" identifier="ProfileViewController" animates="NO" modalPresentationStyle="fullScreen" id="YgF-ty-D1f"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBI-oT-Ic6">
@@ -570,7 +570,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEQ-0b-7Ut">
-                                <rect key="frame" x="1" y="188" width="412" height="45"/>
+                                <rect key="frame" x="1" y="144" width="412" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="YbI-Oq-EqH"/>
                                 </constraints>
@@ -581,11 +581,11 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OWO-2T-L2j">
-                                <rect key="frame" x="0.0" y="234" width="414" height="576"/>
+                                <rect key="frame" x="0.0" y="190" width="414" height="620"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-De-cVo">
-                                <rect key="frame" x="50" y="118" width="18" height="18"/>
+                                <rect key="frame" x="50" y="74" width="18" height="18"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="18" id="1g7-bh-uz7"/>
@@ -1148,7 +1148,7 @@
                                     <constraint firstAttribute="width" constant="60" id="d43-ag-6oG"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.58259034160000001" blue="0.70864278079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="person.circle" catalog="system"/>
+                                <state key="normal" image="person.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="reloadProfile:" destination="kb3-4J-vAe" eventType="touchUpInside" id="VM1-Zz-ago"/>
                                 </connections>
@@ -1162,7 +1162,7 @@
                                 <color key="tintColor" red="0.0" green="0.58259034160000001" blue="0.70864278079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="house" catalog="system"/>
                                 <connections>
-                                    <segue destination="CcE-bq-SAW" kind="presentation" modalPresentationStyle="fullScreen" id="kBy-8C-bjt"/>
+                                    <segue destination="CcE-bq-SAW" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="kBy-8C-bjt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbZ-cP-wWh">
@@ -1272,12 +1272,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="YgF-ty-D1f"/>
-        <segue reference="PWK-K2-2py"/>
-        <segue reference="7f9-bt-1Kn"/>
-        <segue reference="tmf-AA-ssJ"/>
-        <segue reference="IN6-Mj-dai"/>
-        <segue reference="gVB-6u-yCC"/>
-        <segue reference="joG-0H-45j"/>
+        <segue reference="INr-h4-tSq"/>
+        <segue reference="7VR-ib-DQj"/>
+        <segue reference="31R-cp-72d"/>
+        <segue reference="ciy-eA-R0Y"/>
+        <segue reference="pvr-29-6lT"/>
+        <segue reference="eur-Cz-cF6"/>
         <segue reference="QvH-Fj-o1B"/>
         <segue reference="t2l-dS-MqZ"/>
     </inferredMetricsTieBreakers>
@@ -1287,9 +1287,11 @@
         <image name="gamecontroller" catalog="system" width="128" height="80"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
