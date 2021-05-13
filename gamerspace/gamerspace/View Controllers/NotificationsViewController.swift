@@ -61,6 +61,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             DispatchQueue.main.async {
                 for (index, friendRequest) in friendRequests.enumerated() {
                     self.models.append(gamerspaceFriendRequest(status: friendRequest.status, user_id: friendRequest.friend_id, friend_id: friendRequest.user_id, username: friendRequest.username, created: friendRequest.created, index: index))
+                    print(index)
                 }
                 self.table.register(FriendRequestsTableViewCell.nib(), forCellReuseIdentifier: FriendRequestsTableViewCell.identifier)
                 self.table.delegate = self
@@ -75,24 +76,23 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
 
 extension NotificationsViewController: FriendRequestsTableViewDelegate {
     func acceptFriendRequest(with user_id: Int, with friend_id: Int, with index: Int) {
+        print("removing at: \(index)")
         friendData.acceptFriendRequest(user_id: user_id, friend_id: friend_id) { (FriendConfirmation) in
             print(FriendConfirmation)
             DispatchQueue.main.async {
-                print("UserID: \(user_id) FriendID: \(friend_id)")
                 self.models.remove(at: index)
-                let indexPath = IndexPath(item: index, section: index)
+                let indexPath = IndexPath(item: index, section: 0)
                 self.table.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
     
     func declineFriendRequest(with user_id: Int, with friend_id: Int, with index: Int) {
-        print("UserID: \(user_id) FriendID: \(friend_id)")
         friendData.deleteFriend(user_id: user_id, friend_id: friend_id) { (FriendConfirmation) in
             print(FriendConfirmation)
             DispatchQueue.main.async {
                 self.models.remove(at: index)
-                let indexPath = IndexPath(item: index, section: index)
+                let indexPath = IndexPath(item: index, section: 0)
                 self.table.deleteRows(at: [indexPath], with: .fade)
             }
             
