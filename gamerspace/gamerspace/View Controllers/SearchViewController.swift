@@ -70,22 +70,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         if let searchInput:String = textField.text {
            // print(searchInput)
             self.models.removeAll()
-            userData.searchUsers(username: searchInput) { (users) in
-                DispatchQueue.main.async {
-                    self.searchResultsView.isHidden = false
-                    for user in users {
-                        print("User: \(user.user_id)")
-                        self.models.append(gamerspaceUser(user_id: user.user_id, username: user.username, created: user.created))
+            let searchTerm = searchInput.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            if let search:String = searchTerm {
+                userData.searchUsers(username: search) { (users) in
+                    DispatchQueue.main.async {
+                        self.searchResultsView.isHidden = false
+                        for user in users {
+                            print("User: \(user.user_id)")
+                            self.models.append(gamerspaceUser(user_id: user.user_id, username: user.username, created: user.created))
+                        }
+                        self.table.register(SearchResultsTableViewCell.nib(), forCellReuseIdentifier: SearchResultsTableViewCell.identifier)
+                        self.table.delegate = self
+                        self.table.dataSource = self
+                        self.table.setNeedsLayout()
+                        self.table.layoutIfNeeded()
+                        self.table.reloadData()
                     }
-                    self.table.register(SearchResultsTableViewCell.nib(), forCellReuseIdentifier: SearchResultsTableViewCell.identifier)
-                    self.table.delegate = self
-                    self.table.dataSource = self
-                    self.table.setNeedsLayout()
-                    self.table.layoutIfNeeded()
-                    self.table.reloadData()
+                    
                 }
-                
             }
+    
         }
         
         return true
