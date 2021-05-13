@@ -10,7 +10,6 @@ import UIKit
 protocol FriendRequestsTableViewDelegate: AnyObject {
     func declineFriendRequest(with user_id: Int, with friend_id: Int, with index: Int)
     func acceptFriendRequest(with user_id: Int, with friend_id: Int, with index: Int)
-    
 }
 
 class FriendRequestsTableViewCell: UITableViewCell {
@@ -51,7 +50,6 @@ class FriendRequestsTableViewCell: UITableViewCell {
         acceptButton.layer.cornerRadius = 5
         deleteButton.layer.cornerRadius = 5
         self.layoutIfNeeded()
-        // Initialization code
     }
     
     func configure(with model: gamerspaceFriendRequest) {
@@ -59,8 +57,5 @@ class FriendRequestsTableViewCell: UITableViewCell {
         user_id = model.user_id
         friend_id = model.friend_id
         index = model.index
-        
-       // self.title = model.username
-      //  profileButton.setTitle(title, for: .normal)
     }
 }

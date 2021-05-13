@@ -16,6 +16,7 @@ class WritePostViewController: UIViewController, UITextViewDelegate {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBOutlet weak var createPostButton: UIButton!
     var postString: String = ""
     var postWords: [String] = []
     var newWord: String = ""
@@ -25,11 +26,15 @@ class WritePostViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         self.postText.delegate = self
         super.viewDidLoad()
+        createPostButton.layer.cornerRadius = 10
+        createPostButton.layer.masksToBounds = false
+        createPostButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+
     }
     
     @IBAction func createPost(_ sender: Any) {
         
-        let postData = PostResponses()
+        let postData = PostService()
         
         if let postInput:String = postText.text {
             postData.createPost(post: postInput, html: htmlString, userReceiverId: postReceiverId) { (PostConfirmation) in

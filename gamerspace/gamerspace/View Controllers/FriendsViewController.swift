@@ -16,7 +16,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBOutlet weak var table: UITableView!
-    var friendData = FriendResponses()
+    var friendData = FriendService()
     var models = [gamerspaceUser]()
     var username = String()
     var user_id = Int()

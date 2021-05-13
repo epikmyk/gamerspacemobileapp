@@ -50,7 +50,6 @@ class PostTableViewCell: UITableViewCell {
     func configure(with model: gamerspacePost, with imageModel: [attributedTextFromHtml]) {
         self.postTextView.text = "\(model.post)"
         self.usernameLabel.text = model.username
-        //print(model.user_id)
         
         if checkURL(url: model.post) && !model.hasImage{
             delegate?.loadImage(with: model.index, with: imageModel.count, with: model.post.convertToAttributedFromHTML())

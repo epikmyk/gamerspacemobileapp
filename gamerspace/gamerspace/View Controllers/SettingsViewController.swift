@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    let userData = UserResponses()
+    let userData = UserService()
     var username = String()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

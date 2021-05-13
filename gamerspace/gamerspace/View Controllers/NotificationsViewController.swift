@@ -50,7 +50,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    var friendData = FriendResponses()
+    var friendData = FriendService()
     
     override func viewDidLoad() {
         super.viewDidLoad()

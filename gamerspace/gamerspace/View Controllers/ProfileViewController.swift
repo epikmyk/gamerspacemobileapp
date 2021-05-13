@@ -36,10 +36,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         //updateFavoriteGames()
     }
     
-    let userData = UserResponses()
-    let postData = PostResponses()
-    let friendData = FriendResponses()
-    let gameData = GameResponses()
+    let userData = UserService()
+    let postData = PostService()
+    let friendData = FriendService()
+    let gameData = GameService()
     var profileModel = Profile(username: "", user_id: 0)
     var models = [gamerspacePost]()
     var htmlImages = [attributedTextFromHtml]()
@@ -299,6 +299,4 @@ extension ProfileViewController: UserProfileGamesTableViewCellDelegate {
         print("add some games")
         self.performSegue(withIdentifier: "AddGamesViewController", sender: nil)
     }
-    
-  
 }

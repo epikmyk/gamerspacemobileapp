@@ -13,10 +13,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var notificationsLabel: UILabel!
     
-    let userData = UserResponses()
-    let postData = PostResponses()
-    let friendData = FriendResponses()
-    let gameData = GameResponses()
+    let userData = UserService()
+    let postData = PostService()
+    let friendData = FriendService()
+    let gameData = GameService()
     
     var models = [gamerspacePost]()
     var username = String()

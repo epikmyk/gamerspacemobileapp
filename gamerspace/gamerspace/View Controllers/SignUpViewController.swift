@@ -9,16 +9,65 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
-    let userData = UserResponses()
+    let userData = UserService()
     
+    @IBOutlet weak var createAccountLabel: UILabel!
+    @IBOutlet weak var haveAccountLabel: UILabel!
+    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        backgroundGradientView.layer.zPosition = -1
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor(red: 194/255, green: 21/255, blue: 0/255, alpha: 1).cgColor, UIColor(red: 255/255, green: 197/255, blue: 0/255, alpha: 1).cgColor]
+        gradientLayer.shouldRasterize = true
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        backgroundGradientView.layer.addSublayer(gradientLayer)
+        
+        password.delegate = self
+        
+        email.layer.cornerRadius = 25
+        email.layer.borderWidth = 1
+        email.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
+        email.borderStyle = UITextField.BorderStyle.none
+        email.layer.borderColor = UIColor.systemGray5.cgColor
+        
+        username.layer.cornerRadius = 25
+        username.layer.borderWidth = 1
+        username.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
+        username.borderStyle = UITextField.BorderStyle.none
+        username.layer.borderColor = UIColor.systemGray5.cgColor
+        
+        password.layer.cornerRadius = 25
+        password.layer.borderWidth = 1
+        password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
+        password.borderStyle = UITextField.BorderStyle.none
+        password.layer.borderColor = UIColor.systemGray5.cgColor
+
+        signUpButton.layer.cornerRadius = 25
+        signUpButton.layer.masksToBounds = false
+        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        
+        createAccountLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        haveAccountLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
+        logInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -42,33 +91,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        password.delegate = self
-        
-        
-        
-        
-        backgroundGradientView.layer.zPosition = -1
-        /*
-        let gradientLayer = CAGradientLayer()
-                // Set the size of the layer to be equal to size of the display.
-                gradientLayer.frame = view.bounds
-                // Set an array of Core Graphics colors (.cgColor) to create the gradient.
-                // This example uses a Color Literal and a UIColor from RGB values.
-                gradientLayer.colors = [#colorLiteral(red: 0.3176470588, green: 0.1647058824, blue: 0.3450980392, alpha: 1).cgColor, UIColor(red: 173/255, green: 74/255, blue: 103/255, alpha: 1).cgColor]
-                // Rasterize this static layer to improve app performance.
-                gradientLayer.shouldRasterize = true
-                // Apply the gradient to the backgroundGradientView.
-                backgroundGradientView.layer.addSublayer(gradientLayer)*/
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
     

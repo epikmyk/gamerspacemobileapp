@@ -14,7 +14,7 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
     var favoriteGames = [GameModel]()
     var favoriteGameIndex = [Int]()
     var favoriteGameName = [String]()
-    let gameData = GameResponses()
+    let gameData = GameService()
     var cellOverlay = [Bool]()
 
     @IBOutlet weak var addFavoriteGamesButton: UIButton!
@@ -91,8 +91,8 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
         let layout = UICollectionViewFlowLayout()
         let screenSize: CGRect = UIScreen.main.bounds
         layout.itemSize = CGSize(width: screenSize.width / 2.5, height: 120)
-        addFavoriteGamesButton.layer.cornerRadius = 5
-        addFavoriteGamesButton.layer.masksToBounds = true
+        addFavoriteGamesButton.layer.cornerRadius = 20
+        addFavoriteGamesButton.layer.masksToBounds = false
         collectionView.collectionViewLayout = layout
         collectionView.register(AddGamesCollectionViewCell.nib(), forCellWithReuseIdentifier: AddGamesCollectionViewCell.identifier)
         collectionView.delegate = self

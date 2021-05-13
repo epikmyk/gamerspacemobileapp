@@ -9,10 +9,49 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    let userData = UserResponses()
+    let userData = UserService()
     
+    @IBOutlet weak var logInLabel: UILabel!
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var noAccountLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var backgroundGradientView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor(red: 194/255, green: 21/255, blue: 0/255, alpha: 1).cgColor, UIColor(red: 255/255, green: 197/255, blue: 0/255, alpha: 1).cgColor]
+        gradientLayer.shouldRasterize = true
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        backgroundGradientView.layer.addSublayer(gradientLayer)
+        
+        username.layer.cornerRadius = 25
+        username.layer.borderWidth = 1
+        username.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
+        username.borderStyle = UITextField.BorderStyle.none
+        username.layer.borderColor = UIColor.systemGray5.cgColor
+        
+        password.layer.cornerRadius = 25
+        password.layer.borderWidth = 1
+        password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray4])
+        password.borderStyle = UITextField.BorderStyle.none
+        password.layer.borderColor = UIColor.systemGray5.cgColor
+        password.delegate = self
+        
+        logInButton.layer.cornerRadius = 25
+        logInButton.layer.masksToBounds = false
+        logInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        
+        logInLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        noAccountLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
+        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -33,10 +72,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        password.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

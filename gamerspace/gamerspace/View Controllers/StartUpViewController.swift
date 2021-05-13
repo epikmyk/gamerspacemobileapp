@@ -22,21 +22,34 @@ func userLoggedIn() -> Bool {
 
 class StartUpViewController: UIViewController {
     
+    @IBOutlet weak var backgroundGradientView: UIView!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var gamerSpaceLabel: UILabel!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var gamerSpaceLogo: UIImageView!
+    @IBOutlet weak var taglineLabel: UILabel!
+    
     override func viewDidLoad() {
+    
         super.viewDidLoad()
-        if userLoggedIn() {
-            print("user is logged in")
-        } else {
-            print("user is logged out")
-        }
+        createAccountButton.layer.cornerRadius = 25
+        createAccountButton.layer.masksToBounds = false
+        createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        signInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        taglineLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        gamerSpaceLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor(red: 194/255, green: 21/255, blue: 0/255, alpha: 1).cgColor, UIColor(red: 255/255, green: 197/255, blue: 0/255, alpha: 1).cgColor]
+        gradientLayer.shouldRasterize = true
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        backgroundGradientView.layer.addSublayer(gradientLayer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if userLoggedIn() {
-            /*
-            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationViewController") as! HomeViewController
-            nextViewController.modalPresentationStyle = .fullScreen
-            self.present(nextViewController, animated: false, completion: nil)*/
             
             let dashboard = self.storyboard?.instantiateViewController(withIdentifier: "NavigationViewController") as! UINavigationController
             self.navigationController?.pushViewController(dashboard, animated: true)

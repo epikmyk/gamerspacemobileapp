@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var userData = UserResponses()
+    var userData = UserService()
     var models = [gamerspaceUser]()
     var username = String()
     var user_id = Int()
@@ -91,7 +91,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             }
     
         }
-        
         return true
     }
 }

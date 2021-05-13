@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E123090D2649F95100EB73DE /* GameResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123090C2649F95000EB73DE /* GameResponses.swift */; };
+		E123090D2649F95100EB73DE /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123090C2649F95000EB73DE /* GameService.swift */; };
 		E1230911264A3B2B00EB73DE /* UserProfileGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123090F264A3B2B00EB73DE /* UserProfileGamesTableViewCell.swift */; };
 		E1230912264A3B2B00EB73DE /* UserProfileGamesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1230910264A3B2B00EB73DE /* UserProfileGamesTableViewCell.xib */; };
 		E123091C264A4FAA00EB73DE /* UserProfileGamesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123091A264A4FAA00EB73DE /* UserProfileGamesCollectionViewCell.swift */; };
@@ -15,15 +15,15 @@
 		E132E3882644A05800696F7D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E3872644A05800696F7D /* SearchViewController.swift */; };
 		E132E3942646115900696F7D /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E3922646115900696F7D /* SearchResultsTableViewCell.swift */; };
 		E132E3952646115900696F7D /* SearchResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E132E3932646115900696F7D /* SearchResultsTableViewCell.xib */; };
-		E132E39C26461ADC00696F7D /* FriendResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E39B26461ADC00696F7D /* FriendResponses.swift */; };
+		E132E39C26461ADC00696F7D /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E39B26461ADC00696F7D /* FriendService.swift */; };
 		E132E39F26461B2100696F7D /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E39E26461B2100696F7D /* FriendsViewController.swift */; };
 		E132E3A326470CFD00696F7D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E3A226470CFC00696F7D /* NotificationsViewController.swift */; };
 		E132E3A72647369900696F7D /* FriendRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132E3A52647369900696F7D /* FriendRequestsTableViewCell.swift */; };
 		E132E3A82647369900696F7D /* FriendRequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E132E3A62647369900696F7D /* FriendRequestsTableViewCell.xib */; };
 		E183005D2640A6E1005D2AC3 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183005B2640A6E1005D2AC3 /* PostTableViewCell.swift */; };
 		E183005E2640A6E1005D2AC3 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E183005C2640A6E1005D2AC3 /* PostTableViewCell.xib */; };
-		E18300622641D855005D2AC3 /* UserResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18300612641D855005D2AC3 /* UserResponses.swift */; };
-		E18300652641EC44005D2AC3 /* PostResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18300642641EC44005D2AC3 /* PostResponses.swift */; };
+		E18300622641D855005D2AC3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18300612641D855005D2AC3 /* UserService.swift */; };
+		E18300652641EC44005D2AC3 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18300642641EC44005D2AC3 /* PostService.swift */; };
 		E183006826421898005D2AC3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183006726421898005D2AC3 /* ProfileViewController.swift */; };
 		E19F2BDE263E803400CA5543 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F2BDD263E803400CA5543 /* SettingsViewController.swift */; };
 		E19F2BE1263E96F000CA5543 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F2BE0263E96F000CA5543 /* LoginViewController.swift */; };
@@ -39,6 +39,7 @@
 		E1AFFF2B264B0F3900E1EA23 /* AddGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFFF2A264B0F3900E1EA23 /* AddGamesViewController.swift */; };
 		E1AFFF2F264B2C6000E1EA23 /* AddGamesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFFF2D264B2C6000E1EA23 /* AddGamesCollectionViewCell.swift */; };
 		E1AFFF30264B2C6000E1EA23 /* AddGamesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AFFF2E264B2C6000E1EA23 /* AddGamesCollectionViewCell.xib */; };
+		E1AFFF3D264D1F2800E1EA23 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFFF3C264D1F2700E1EA23 /* CustomTextField.swift */; };
 		E1F9456E263A20140072085F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9456D263A20140072085F /* AppDelegate.swift */; };
 		E1F94570263A20140072085F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9456F263A20140072085F /* SceneDelegate.swift */; };
 		E1F94572263A20140072085F /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F94571263A20140072085F /* StartUpViewController.swift */; };
@@ -50,7 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E123090C2649F95000EB73DE /* GameResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponses.swift; sourceTree = "<group>"; };
+		E123090C2649F95000EB73DE /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		E123090F264A3B2B00EB73DE /* UserProfileGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileGamesTableViewCell.swift; sourceTree = "<group>"; };
 		E1230910264A3B2B00EB73DE /* UserProfileGamesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileGamesTableViewCell.xib; sourceTree = "<group>"; };
 		E123091A264A4FAA00EB73DE /* UserProfileGamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileGamesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -58,15 +59,15 @@
 		E132E3872644A05800696F7D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E132E3922646115900696F7D /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		E132E3932646115900696F7D /* SearchResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsTableViewCell.xib; sourceTree = "<group>"; };
-		E132E39B26461ADC00696F7D /* FriendResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendResponses.swift; sourceTree = "<group>"; };
+		E132E39B26461ADC00696F7D /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
 		E132E39E26461B2100696F7D /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		E132E3A226470CFC00696F7D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		E132E3A52647369900696F7D /* FriendRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		E132E3A62647369900696F7D /* FriendRequestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestsTableViewCell.xib; sourceTree = "<group>"; };
 		E183005B2640A6E1005D2AC3 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E183005C2640A6E1005D2AC3 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
-		E18300612641D855005D2AC3 /* UserResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponses.swift; sourceTree = "<group>"; };
-		E18300642641EC44005D2AC3 /* PostResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponses.swift; sourceTree = "<group>"; };
+		E18300612641D855005D2AC3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E18300642641EC44005D2AC3 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		E183006726421898005D2AC3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E19F2BDD263E803400CA5543 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E19F2BE0263E96F000CA5543 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		E1AFFF2A264B0F3900E1EA23 /* AddGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGamesViewController.swift; sourceTree = "<group>"; };
 		E1AFFF2D264B2C6000E1EA23 /* AddGamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGamesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1AFFF2E264B2C6000E1EA23 /* AddGamesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGamesCollectionViewCell.xib; sourceTree = "<group>"; };
+		E1AFFF3C264D1F2700E1EA23 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E1F9456A263A20140072085F /* gamerspace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamerspace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F9456D263A20140072085F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F9456F263A20140072085F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,10 +147,10 @@
 		E1AFFEFF264A806900E1EA23 /* ApiRequests */ = {
 			isa = PBXGroup;
 			children = (
-				E18300612641D855005D2AC3 /* UserResponses.swift */,
-				E18300642641EC44005D2AC3 /* PostResponses.swift */,
-				E132E39B26461ADC00696F7D /* FriendResponses.swift */,
-				E123090C2649F95000EB73DE /* GameResponses.swift */,
+				E18300612641D855005D2AC3 /* UserService.swift */,
+				E18300642641EC44005D2AC3 /* PostService.swift */,
+				E132E39B26461ADC00696F7D /* FriendService.swift */,
+				E123090C2649F95000EB73DE /* GameService.swift */,
 			);
 			path = ApiRequests;
 			sourceTree = "<group>";
@@ -171,6 +173,7 @@
 			children = (
 				E1AFFF20264B012800E1EA23 /* ConvertToAttributedFromHTML.swift */,
 				E1AFFF24264B01BA00E1EA23 /* PercentEncode.swift */,
+				E1AFFF3C264D1F2700E1EA23 /* CustomTextField.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -295,24 +298,25 @@
 				E1F9456E263A20140072085F /* AppDelegate.swift in Sources */,
 				E1AFFF2F264B2C6000E1EA23 /* AddGamesCollectionViewCell.swift in Sources */,
 				E1AFFF2B264B0F3900E1EA23 /* AddGamesViewController.swift in Sources */,
-				E18300622641D855005D2AC3 /* UserResponses.swift in Sources */,
+				E18300622641D855005D2AC3 /* UserService.swift in Sources */,
 				E132E3A72647369900696F7D /* FriendRequestsTableViewCell.swift in Sources */,
 				E123091C264A4FAA00EB73DE /* UserProfileGamesCollectionViewCell.swift in Sources */,
-				E132E39C26461ADC00696F7D /* FriendResponses.swift in Sources */,
+				E132E39C26461ADC00696F7D /* FriendService.swift in Sources */,
 				E1AFFF02264A80CA00E1EA23 /* User.swift in Sources */,
 				E1AFFF11264A824100E1EA23 /* Confirmation.swift in Sources */,
 				E183006826421898005D2AC3 /* ProfileViewController.swift in Sources */,
 				E1AFFF06264A812800E1EA23 /* Post.swift in Sources */,
 				E1230911264A3B2B00EB73DE /* UserProfileGamesTableViewCell.swift in Sources */,
 				E132E3A326470CFD00696F7D /* NotificationsViewController.swift in Sources */,
+				E1AFFF3D264D1F2800E1EA23 /* CustomTextField.swift in Sources */,
 				E1AFFF15264A838200E1EA23 /* FriendRequest.swift in Sources */,
 				E1F94583263A20540072085F /* SignUpViewController.swift in Sources */,
-				E123090D2649F95100EB73DE /* GameResponses.swift in Sources */,
+				E123090D2649F95100EB73DE /* GameService.swift in Sources */,
 				E132E3882644A05800696F7D /* SearchViewController.swift in Sources */,
 				E1F94570263A20140072085F /* SceneDelegate.swift in Sources */,
 				E1AFFF21264B012800E1EA23 /* ConvertToAttributedFromHTML.swift in Sources */,
 				E19F2BDE263E803400CA5543 /* SettingsViewController.swift in Sources */,
-				E18300652641EC44005D2AC3 /* PostResponses.swift in Sources */,
+				E18300652641EC44005D2AC3 /* PostService.swift in Sources */,
 				E1AFFF25264B01BA00E1EA23 /* PercentEncode.swift in Sources */,
 				E132E3942646115900696F7D /* SearchResultsTableViewCell.swift in Sources */,
 				E183005D2640A6E1005D2AC3 /* PostTableViewCell.swift in Sources */,

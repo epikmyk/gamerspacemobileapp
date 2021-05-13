@@ -1,16 +1,16 @@
 //
-//  FriendResponses.swift
+//  UserResponses.swift
 //  gamerspace
 //
-//  Created by Michael Morales on 5/7/21.
+//  Created by Michael Morales on 5/4/21.
 //
 
 import Foundation
 
-struct FriendResponses {
+struct UserService {
     
-    func getFriends(completionHander: @escaping ([User]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriends")
+    func searchUsers(username: String, completionHander: @escaping ([User]) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/users/search/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -39,10 +39,8 @@ struct FriendResponses {
         task.resume()
     }
     
-    func getFriendStatus(username: String, friendUsername: String, completionHander: @escaping (Friend) -> Void) {
-        print("USER IS \(username)")
-        print("WE MADE it here \(friendUsername)")
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriendStatus/\(username)/\(friendUsername)")
+    func getLoggedInUser(completionHander: @escaping (User) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/users/getLoggedInUser")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -61,7 +59,7 @@ struct FriendResponses {
                 let decoder = JSONDecoder()
                 
                 do {
-                    let response = try decoder.decode(Friend.self, from: data)
+                    let response = try decoder.decode(User.self, from: data)
                     completionHander(response)
                 } catch {
                     print(error)
@@ -71,12 +69,14 @@ struct FriendResponses {
         task.resume()
     }
     
-    func getFriendRequests(completionHander: @escaping ([FriendRequest]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriendRequests")
+    func getUser(username: String, completionHander: @escaping (User) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/users/getUser/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
         
+        // Http request body
+       
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             // Check for errors
@@ -91,7 +91,7 @@ struct FriendResponses {
                 let decoder = JSONDecoder()
                 
                 do {
-                    let response = try decoder.decode([FriendRequest].self, from: data)
+                    let response = try decoder.decode(User.self, from: data)
                     completionHander(response)
                 } catch {
                     print(error)
@@ -101,15 +101,15 @@ struct FriendResponses {
         task.resume()
     }
     
-    func friendRequest(friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
+    func createAccount(email: String, username: String, password: String, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/friends/addFriend")
+        let url = URL(string: "http://104.236.83.241/api/users/register")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
         // Parameters to be used for http request
-        let body = "friend_id=\(friend_id)"
+        let body = "email=\(email)&username=\(username)&password=\(password)"
         
         // Http request body
         request.httpBody = body.data(using: String.Encoding.utf8)
@@ -139,16 +139,17 @@ struct FriendResponses {
         task.resume()
     }
     
-    func acceptFriendRequest(user_id: Int, friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
+    func logIn(username: String, password: String, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/friends/acceptFriendRequest")
+        let url = URL(string: "http://104.236.83.241/api/users/login")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
         // Parameters to be used for http request
-        let body = "user_id=\(user_id)&friend_id=\(friend_id)"
+        let body = "username=\(username)&password=\(password)"
         
+        print("made it TO ")
         // Http request body
         request.httpBody = body.data(using: String.Encoding.utf8)
         
@@ -168,30 +169,35 @@ struct FriendResponses {
                 do {
                     let response = try decoder.decode(Confirmation.self, from: data)
                     completionHandler(response)
+                    
                 } catch {
                     print(error)
                 }
             }
-            
         }
         task.resume()
     }
-    func deleteFriend(user_id: Int, friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
-        
-        let url = URL(string: "http://104.236.83.241/api/friends/declineFriendRequest/\(user_id)/\(friend_id)")
-        guard let requestUrl = url else { fatalError()}
+    
+    func logout(completionHandler: @escaping (Confirmation) -> Void) {
+        let url = URL(string: "http://104.236.83.241/api/users/logout")
+        guard let requestUrl = url else { fatalError() }
+        // Prepare URL Request Object
         var request = URLRequest(url: requestUrl)
-        request.httpMethod = "DELETE"
-        
+        request.httpMethod = "POST"
+         
+        // HTTP Request Parameters which will be sent in HTTP Request Body
+        let postString = "";
+        // Set HTTP Request Body
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        // Perform HTTP Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            // Check for errors
+                
+            // Check for Error
             if let error = error {
-                print(error)
+                print("Error took place \(error)")
                 return
             }
-            
-            // Print http response
+         
             if let data = data {
                 
                 let decoder = JSONDecoder()
@@ -199,14 +205,14 @@ struct FriendResponses {
                 do {
                     let response = try decoder.decode(Confirmation.self, from: data)
                     completionHandler(response)
+                    
                 } catch {
                     print(error)
                 }
             }
-            
         }
         task.resume()
     }
     
-
+    
 }

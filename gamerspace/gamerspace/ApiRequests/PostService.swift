@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostResponses {
+struct PostService {
     
     func getUserPostsAndFriendsPosts(callback: @escaping ([Post]) -> Void) {
         let url = URL(string: "http://104.236.83.241/api/posts/getUserPostsAndFriendsPosts")
