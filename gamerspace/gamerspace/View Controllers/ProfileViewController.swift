@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     @IBAction func reloadProfile(_ sender: UIButton) {
         self.profileModel.username = self.loggedInUsername
+        self.greetingLabel.text = self.profileModel.username
         loadUserProfile(with: self.profileModel.username)
         updatePosts()
         updateButtons()
