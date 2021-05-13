@@ -127,7 +127,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-Vs-6rl">
-                                <rect key="frame" x="100" y="75" width="214" height="21"/>
+                                <rect key="frame" x="25" y="75" width="364" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGray5Color"/>
                                 <nil key="highlightedColor"/>
@@ -215,17 +215,17 @@
                             <constraint firstItem="aNZ-na-4v6" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" constant="50" id="79u-ZJ-AmP"/>
                             <constraint firstAttribute="trailing" secondItem="xVu-Ur-ZDX" secondAttribute="trailing" constant="50" id="7Fr-d0-8zY"/>
                             <constraint firstItem="TGc-Vs-6rl" firstAttribute="top" secondItem="cXY-Ag-u4d" secondAttribute="top" constant="75" id="857-a6-7ZA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TGc-Vs-6rl" secondAttribute="trailing" constant="5" id="Bv3-to-MLE"/>
                             <constraint firstAttribute="bottom" secondItem="eaS-Gy-XCs" secondAttribute="bottom" id="CDl-8N-NwQ"/>
                             <constraint firstItem="xVu-Ur-ZDX" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" constant="50" id="DCP-37-sqj"/>
                             <constraint firstAttribute="trailing" secondItem="AYm-Qt-wuu" secondAttribute="trailing" constant="50" id="K2W-6w-sxn"/>
                             <constraint firstAttribute="bottomMargin" secondItem="hT4-tZ-ADW" secondAttribute="bottom" constant="50" id="Qro-Ky-PYW"/>
+                            <constraint firstItem="TGc-Vs-6rl" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leadingMargin" constant="5" id="Ve8-ZY-nHa"/>
                             <constraint firstAttribute="trailing" secondItem="aNZ-na-4v6" secondAttribute="trailing" constant="50" id="Xs7-ci-Dop"/>
-                            <constraint firstAttribute="trailing" secondItem="TGc-Vs-6rl" secondAttribute="trailing" constant="100" id="d89-lZ-8Ud"/>
                             <constraint firstItem="AYm-Qt-wuu" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" constant="50" id="dMG-Pe-gCF"/>
                             <constraint firstAttribute="trailing" secondItem="lIi-nD-Gys" secondAttribute="trailing" constant="50" id="duH-5f-X8v"/>
                             <constraint firstItem="eaS-Gy-XCs" firstAttribute="top" secondItem="cXY-Ag-u4d" secondAttribute="top" id="geq-T4-UVR"/>
                             <constraint firstItem="eaS-Gy-XCs" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" id="kvK-M0-NeG"/>
-                            <constraint firstItem="TGc-Vs-6rl" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" constant="100" id="mgE-W2-E8t"/>
                             <constraint firstItem="lIi-nD-Gys" firstAttribute="leading" secondItem="cXY-Ag-u4d" secondAttribute="leading" constant="50" id="q72-sT-YpJ"/>
                             <constraint firstItem="aNZ-na-4v6" firstAttribute="top" secondItem="AYm-Qt-wuu" secondAttribute="bottom" constant="40" id="rzE-F7-KbS"/>
                             <constraint firstItem="hT4-tZ-ADW" firstAttribute="centerX" secondItem="cXY-Ag-u4d" secondAttribute="centerX" id="sXr-CV-Xbm"/>
