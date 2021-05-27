@@ -15,6 +15,8 @@ This mobile app will be a social network for gamers that allow gamers to find ot
 # App
 1. Create an account
 ![ ](/screenshots/startup_screen.png=300px)
+<img src="/screenshots/startup_screen.png" alt="drawing" width="300"/>
+
 ![ ](/screenshots/create_account.png=300px)
 
 2. Choose some of your favorite games
