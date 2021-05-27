@@ -26,9 +26,13 @@ This mobile app will be a social network for gamers that allow gamers to find ot
 4. Add a friend
 <img src="/screenshots/add_friend_screen.png" alt="drawing" width="300"/>
 
-4. Write a post for all your friends to see
+5. Write a post for all your friends to see
 <img src="/screenshots/write_post_screen.png" alt="drawing" width="300"/>
 <img src="/screenshots/home_screen.png" alt="drawing" width="300"/>
+
+6. View your profile to see if you have any new posts on your wall
+<img src="/screenshots/profile_screen.png" alt="drawing" width="300"/>
+
 
 
 
