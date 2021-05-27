@@ -33,6 +33,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchResultsView: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchText.delegate = self
+        searchResultsView.isHidden = true
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -56,13 +62,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchText.delegate = self
-        searchResultsView.isHidden = true
-    }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

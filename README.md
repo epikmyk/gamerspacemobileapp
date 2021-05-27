@@ -4,22 +4,30 @@ Michael Morales
 
 This mobile app will be a social network for gamers that allow gamers to find other gamers who play the same games they play.
 
-# Must have features
-* Register User
-* Login/Logout User
-* Write Posts 
-* Add favorite games to user
-* Search for users by username or favorite games
-* Add friends
-* Display posts from friends
-* Write posts to friends
-* Be able to view friends list
+# Features
+* Add favorite games to your user profile
+* Search for other users by the games they play
+* Write posts for all your friends to see
+* Write posts directly to your friends
+* Comment and like posts
+* Chat with your friends
 
-# Nice to have features
-* Use an api to get large amount of games to choose from to add to favorites
-* Display url images writtien in posts
-* Show notifications (i.e. friend requests)
-* Display favorite games on user profile
-* Chat
-* Likes
-* Comments
+# App
+1. Create an account
+![ ](/screenshots/startup_screen.png)
+![ ](/screenshots/create_account.png)
+
+2. Choose some of your favorite games
+![ ](/screenshots/favorite_games.png)
+
+3. Search for some friends who play a game you like
+![ ](/screenshots/search.png)
+
+4. Add a friend
+![ ](/screenshots/add_friend.png)
+
+4. Write a post for all your friends to see
+![ ](/screenshots/write_post.png)
+![ ](/screenshots/home.png)
+
+

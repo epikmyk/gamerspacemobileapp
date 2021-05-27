@@ -43,7 +43,7 @@ class StartUpViewController: UIViewController {
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [UIColor(red: 194/255, green: 21/255, blue: 0/255, alpha: 1).cgColor, UIColor(red: 255/255, green: 197/255, blue: 0/255, alpha: 1).cgColor]
         gradientLayer.shouldRasterize = true
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         backgroundGradientView.layer.addSublayer(gradientLayer)
     }

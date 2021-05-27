@@ -26,6 +26,29 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         dismiss(animated: true, completion: nil)
     }
     
+    var friendData = FriendService()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        friendData.getFriendRequests { (friendRequests) in
+            DispatchQueue.main.async {
+                for (index, friendRequest) in friendRequests.enumerated() {
+                    self.models.append(gamerspaceFriendRequest(status: friendRequest.status, user_id: friendRequest.friend_id, friend_id: friendRequest.user_id, username: friendRequest.username, created: friendRequest.created, index: index))
+                    print(index)
+                }
+                self.table.register(FriendRequestsTableViewCell.nib(), forCellReuseIdentifier: FriendRequestsTableViewCell.identifier)
+                self.table.delegate = self
+                self.table.dataSource = self
+                self.table.setNeedsLayout()
+                self.table.layoutIfNeeded()
+                self.table.reloadData()
+            }
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,29 +72,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    var friendData = FriendService()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        friendData.getFriendRequests { (friendRequests) in
-            DispatchQueue.main.async {
-                for (index, friendRequest) in friendRequests.enumerated() {
-                    self.models.append(gamerspaceFriendRequest(status: friendRequest.status, user_id: friendRequest.friend_id, friend_id: friendRequest.user_id, username: friendRequest.username, created: friendRequest.created, index: index))
-                    print(index)
-                }
-                self.table.register(FriendRequestsTableViewCell.nib(), forCellReuseIdentifier: FriendRequestsTableViewCell.identifier)
-                self.table.delegate = self
-                self.table.dataSource = self
-                self.table.setNeedsLayout()
-                self.table.layoutIfNeeded()
-                self.table.reloadData()
-            }
-        }
-    }
 }
 
 extension NotificationsViewController: FriendRequestsTableViewDelegate {
@@ -80,9 +80,12 @@ extension NotificationsViewController: FriendRequestsTableViewDelegate {
         friendData.acceptFriendRequest(user_id: user_id, friend_id: friend_id) { (FriendConfirmation) in
             print(FriendConfirmation)
             DispatchQueue.main.async {
-                self.models.remove(at: index)
-                let indexPath = IndexPath(item: index, section: 0)
-                self.table.deleteRows(at: [indexPath], with: .fade)
+                if let modelIndex = self.models.firstIndex(where: { $0.friend_id == friend_id }) {
+                    print("index \(modelIndex)")
+                    self.models.remove(at: modelIndex)
+                    let indexPath = IndexPath(item: modelIndex, section: 0)
+                    self.table.deleteRows(at: [indexPath], with: .fade)
+                }
             }
         }
     }
@@ -91,9 +94,12 @@ extension NotificationsViewController: FriendRequestsTableViewDelegate {
         friendData.deleteFriend(user_id: user_id, friend_id: friend_id) { (FriendConfirmation) in
             print(FriendConfirmation)
             DispatchQueue.main.async {
-                self.models.remove(at: index)
-                let indexPath = IndexPath(item: index, section: 0)
-                self.table.deleteRows(at: [indexPath], with: .fade)
+                if let modelIndex = self.models.firstIndex(where: { $0.friend_id == friend_id }) {
+                    print("index \(modelIndex)")
+                    self.models.remove(at: modelIndex)
+                    let indexPath = IndexPath(item: modelIndex, section: 0)
+                    self.table.deleteRows(at: [indexPath], with: .fade)
+                }
             }
             
         }

@@ -24,6 +24,8 @@ class FriendRequestsTableViewCell: UITableViewCell {
     var user_id = Int()
     var friend_id = Int()
     var index = Int()
+    var username = String()
+    var created = String()
     
     @IBAction func acceptFriendRequest(_ sender: UIButton) {
         print("accepted button pressed")
@@ -56,6 +58,8 @@ class FriendRequestsTableViewCell: UITableViewCell {
         self.usernameLabel.text = model.username
         user_id = model.user_id
         friend_id = model.friend_id
+        username = model.username
+        created = model.created
         index = model.index
     }
 }

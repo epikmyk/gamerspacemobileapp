@@ -21,14 +21,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var username = String()
     var user_id = Int()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let profileController = segue.destination as? ProfileViewController else {
-            return
-        }
-        profileController.profileModel.username = self.username
-        profileController.profileModel.user_id = self.user_id
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -50,6 +42,15 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let profileController = segue.destination as? ProfileViewController else {
+            return
+        }
+        profileController.profileModel.username = self.username
+        profileController.profileModel.user_id = self.user_id
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

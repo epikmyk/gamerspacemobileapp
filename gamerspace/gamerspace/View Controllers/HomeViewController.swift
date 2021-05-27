@@ -26,6 +26,73 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var postHeight = CGFloat()
     var htmlImages = [attributedTextFromHtml]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        notificationsLabel.layer.cornerRadius = 10
+        notificationsLabel.layer.masksToBounds = true
+        notificationsLabel.isHidden = true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.handleWritePostModalDismissed), name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
+        self.postHeight = 50
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        //get data from logged in user
+        userData.getLoggedInUser { (user) in
+            
+            DispatchQueue.main.async {
+                self.username = user.username
+                self.userId = user.user_id
+                self.greetingLabel.text = "Hi, \(user.username)"
+            }
+        }
+        
+        //get pending friend requests
+        friendData.getFriendRequests { (friendRequests) in
+
+            DispatchQueue.main.async {
+                self.friendRequestCount = friendRequests.count
+                UNUserNotificationCenter.current().requestAuthorization(options: .badge)
+                     { (granted, error) in
+                          if error == nil {
+                              // success!
+                          }
+                     }
+                UIApplication.shared.applicationIconBadgeNumber = self.friendRequestCount
+                if friendRequests.count > 0 {
+                    self.notificationsLabel.isHidden = false
+                    self.notificationsLabel.text = String(self.friendRequestCount)
+                }
+                else {
+                    self.notificationsLabel.isHidden = true
+                }
+            }
+        }
+        
+        //get posts to main feed
+        postData.getUserPostsAndFriendsPosts { (posts) in
+            DispatchQueue.main.async {
+                self.models.removeAll()
+                self.htmlImages.removeAll()
+                for (index, post) in posts.enumerated() {
+                    self.models.append(gamerspacePost(username: post.username, post: post.post, index: index, hasImage: false, imageIndex: 0))
+                }
+                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
+                self.table.delegate = self
+                self.table.dataSource = self
+                self.table.setNeedsLayout()
+                self.table.layoutIfNeeded()
+                self.table.reloadData()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileViewController" {
             guard let profileController = segue.destination as? ProfileViewController else {
@@ -73,13 +140,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        notificationsLabel.layer.cornerRadius = 10
-        notificationsLabel.layer.masksToBounds = true
-        notificationsLabel.isHidden = true
-    }
-    
     @objc func handleWritePostModalDismissed() {
         postData.getUserPostsAndFriendsPosts { (posts) in
             DispatchQueue.main.async {
@@ -87,59 +147,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.table.beginUpdates()
                 self.table.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
                 self.table.endUpdates()
-                self.table.reloadData()
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.handleWritePostModalDismissed), name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
-        self.postHeight = 50
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        //get data from logged in user
-        userData.getLoggedInUser { (user) in
-            
-            DispatchQueue.main.async {
-                self.username = user.username
-                self.userId = user.user_id
-                self.greetingLabel.text = "Hi, \(user.username)"
-            }
-        }
-        
-        //get pending friend requests
-        friendData.getFriendRequests { (friendRequests) in
-
-            DispatchQueue.main.async {
-                self.friendRequestCount = friendRequests.count
-                if friendRequests.count > 0 {
-                    self.notificationsLabel.isHidden = false
-                    self.notificationsLabel.text = String(self.friendRequestCount)
-                }
-                else {
-                    self.notificationsLabel.isHidden = true
-                }
-            }
-        }
-        
-        //get posts to main feed
-        postData.getUserPostsAndFriendsPosts { (posts) in
-            DispatchQueue.main.async {
-                self.models.removeAll()
-                self.htmlImages.removeAll()
-                for (index, post) in posts.enumerated() {
-                    self.models.append(gamerspacePost(username: post.username, post: post.post, index: index, hasImage: false, imageIndex: 0))
-                }
-                self.table.register(PostTableViewCell.nib(), forCellReuseIdentifier: PostTableViewCell.identifier)
-                self.table.delegate = self
-                self.table.dataSource = self
-                self.table.setNeedsLayout()
-                self.table.layoutIfNeeded()
                 self.table.reloadData()
             }
         }

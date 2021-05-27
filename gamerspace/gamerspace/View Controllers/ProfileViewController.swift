@@ -51,67 +51,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var postHeight = CGFloat()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "WritePostViewController" {
-            guard let writePostController = segue.destination as? WritePostViewController else {
-                return
-            }
-            writePostController.postReceiverId = profileModel.user_id
-        }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count + 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if(indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileGamesTableViewCell.identifier, for: indexPath) as! UserProfileGamesTableViewCell
-            cell.configure(with: gameModels)
-            if loggedInUsername != profileModel.username {
-                cell.addGamesButton.isHidden = true
-            }
-            else {
-                cell.addGamesButton.isHidden = false
-            }
-            cell.delegate = self
-            
-            return cell
-            
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-            let imgIndex = models[indexPath.row - 1].imageIndex
-            if models[indexPath.row - 1].hasImage {
-                cell.configureImages(with: models[indexPath.row - 1], with: htmlImages[imgIndex])
-            }
-            else {
-                cell.configure(with: models[indexPath.row - 1], with: htmlImages)
-            }
-            cell.delegate = self
-            //cell.setNeedsLayout()
-           // cell.layoutIfNeeded()
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //return 120 + 140 + view.frame.size.width
-        if indexPath.row == 0 {
-            return 190
-        }
-        return 160 + self.postHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationsLabel.layer.cornerRadius = 10
@@ -120,25 +59,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.addFriendButton.isHidden = true
         self.writePostButton.isHidden = true
     
-    }
-    
-    @objc func handleWritePostModalDismissed(_ notification: NSNotification) {
-        print("USERNAME IS: \(profileModel.username)")
-        postData.getUserPosts(username: profileModel.username) { (posts) in
-            DispatchQueue.main.async {
-                print("we IN HERE")
-                self.models.insert(gamerspacePost(username: "\(posts[0].username)", post: "\(posts[0].post)", index: 0, hasImage: false, imageIndex: 0), at: 0)
-                self.table.beginUpdates()
-                self.table.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
-                self.table.endUpdates()
-                self.table.reloadData()
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -168,6 +88,88 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         updatePosts()
         updateButtons()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "writePostModalDismissed"), object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WritePostViewController" {
+            guard let writePostController = segue.destination as? WritePostViewController else {
+                return
+            }
+            writePostController.postReceiverId = profileModel.user_id
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //load list of games in first table view cell
+        if(indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserProfileGamesTableViewCell.identifier, for: indexPath) as! UserProfileGamesTableViewCell
+            cell.configure(with: gameModels)
+            if loggedInUsername != profileModel.username {
+                cell.addGamesButton.isHidden = true
+            }
+            else {
+                cell.addGamesButton.isHidden = false
+            }
+            cell.delegate = self
+            
+            return cell
+            
+        }
+        else {
+            //load posts in all other table view cells
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+            let imgIndex = models[indexPath.row - 1].imageIndex
+            if models[indexPath.row - 1].hasImage {
+                cell.configureImages(with: models[indexPath.row - 1], with: htmlImages[imgIndex])
+            }
+            else {
+                cell.configure(with: models[indexPath.row - 1], with: htmlImages)
+            }
+            cell.delegate = self
+            //cell.setNeedsLayout()
+           // cell.layoutIfNeeded()
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //return 120 + 140 + view.frame.size.width
+        if indexPath.row == 0 {
+            return 190
+        }
+        return 160 + self.postHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    @objc func handleWritePostModalDismissed(_ notification: NSNotification) {
+        print("USERNAME IS: \(profileModel.username)")
+        postData.getUserPosts(username: profileModel.username) { (posts) in
+            DispatchQueue.main.async {
+                print("we IN HERE")
+                self.models.insert(gamerspacePost(username: "\(posts[0].username)", post: "\(posts[0].post)", index: 0, hasImage: false, imageIndex: 0), at: 0)
+                self.table.beginUpdates()
+                self.table.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
+                self.table.endUpdates()
+                self.table.reloadData()
+            }
+        }
     }
     
     func updatePosts() -> Void {

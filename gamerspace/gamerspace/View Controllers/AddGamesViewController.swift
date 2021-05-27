@@ -36,6 +36,40 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchText.delegate = self
+        let layout = UICollectionViewFlowLayout()
+        let screenSize: CGRect = UIScreen.main.bounds
+        layout.itemSize = CGSize(width: screenSize.width / 2.5, height: 120)
+        addFavoriteGamesButton.layer.cornerRadius = 20
+        addFavoriteGamesButton.layer.masksToBounds = false
+        collectionView.collectionViewLayout = layout
+        collectionView.register(AddGamesCollectionViewCell.nib(), forCellWithReuseIdentifier: AddGamesCollectionViewCell.identifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        gameData.getGames { (Response) in
+            DispatchQueue.main.async {
+                for game in Response.results {
+                    if
+                        let image = game.background_image,
+                        let name = game.name,
+                        let slug = game.slug
+                    {
+                        print(name)
+                        self.models.append(GameModel(slug: slug, text: name, image: image))
+                        self.cellOverlay.append(false)
+                        self.gameAdded.append(false)
+                        self.favoriteGameIndex.append(0)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count
@@ -85,41 +119,6 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
         self.collectionView.reloadItems(at: [indexPath])
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchText.delegate = self
-        let layout = UICollectionViewFlowLayout()
-        let screenSize: CGRect = UIScreen.main.bounds
-        layout.itemSize = CGSize(width: screenSize.width / 2.5, height: 120)
-        addFavoriteGamesButton.layer.cornerRadius = 20
-        addFavoriteGamesButton.layer.masksToBounds = false
-        collectionView.collectionViewLayout = layout
-        collectionView.register(AddGamesCollectionViewCell.nib(), forCellWithReuseIdentifier: AddGamesCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        gameData.getGames { (Response) in
-            DispatchQueue.main.async {
-                for game in Response.results {
-                    if
-                        let image = game.background_image,
-                        let name = game.name,
-                        let slug = game.slug
-                    {
-                        print(name)
-                        self.models.append(GameModel(slug: slug, text: name, image: image))
-                        self.cellOverlay.append(false)
-                        self.gameAdded.append(false)
-                        self.favoriteGameIndex.append(0)
-                    }
-                }
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         print("searched")
@@ -151,5 +150,6 @@ class AddGamesViewController: UIViewController, UITextFieldDelegate, UICollectio
         }
         return true
     }
+    
 }
 
