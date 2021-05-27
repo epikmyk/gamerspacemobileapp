@@ -14,21 +14,21 @@ This mobile app will be a social network for gamers that allow gamers to find ot
 
 # App
 1. Create an account
-<img src="/screenshots/startup_screen.png" alt="drawing" width="300"/>
-<img src="/screenshots/create_account.png" alt="drawing" width="300"/>
+<img src="/screenshots/start_screen.png" alt="drawing" width="300"/>
+<img src="/screenshots/create_account_screen.png" alt="drawing" width="300"/>
 
 2. Choose some of your favorite games
-<img src="/screenshots/favorite_games.png" alt="drawing" width="300"/>
+<img src="/screenshots/favorite_games_screen.png" alt="drawing" width="300"/>
 
 3. Search for some friends who play a game you like
-<img src="/screenshots/search.png" alt="drawing" width="300"/>
+<img src="/screenshots/search_screen.png" alt="drawing" width="300"/>
 
 4. Add a friend
-<img src="/screenshots/add_friend.png" alt="drawing" width="300"/>
+<img src="/screenshots/add_friend_screen.png" alt="drawing" width="300"/>
 
 4. Write a post for all your friends to see
-<img src="/screenshots/write_post.png" alt="drawing" width="300"/>
-<img src="/screenshots/home.png" alt="drawing" width="300"/>
+<img src="/screenshots/write_post_screen.png" alt="drawing" width="300"/>
+<img src="/screenshots/home_screen.png" alt="drawing" width="300"/>
 
 
 
