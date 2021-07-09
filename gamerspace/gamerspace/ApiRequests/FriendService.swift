@@ -10,7 +10,7 @@ import Foundation
 struct FriendService {
     
     func getFriends(completionHander: @escaping ([User]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriends")
+        let url = URL(string: "https://gamerspace.gg/api/friends/getFriends")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -42,7 +42,7 @@ struct FriendService {
     func getFriendStatus(username: String, friendUsername: String, completionHander: @escaping (Friend) -> Void) {
         print("USER IS \(username)")
         print("WE MADE it here \(friendUsername)")
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriendStatus/\(username)/\(friendUsername)")
+        let url = URL(string: "https://gamerspace.gg/api/friends/getFriendStatus/\(username)/\(friendUsername)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -72,7 +72,7 @@ struct FriendService {
     }
     
     func getFriendRequests(completionHander: @escaping ([FriendRequest]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/friends/getFriendRequests")
+        let url = URL(string: "https://gamerspace.gg/api/friends/getFriendRequests")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -103,7 +103,7 @@ struct FriendService {
     
     func friendRequest(friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/friends/addFriend")
+        let url = URL(string: "https://gamerspace.gg/api/friends/addFriend")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -141,7 +141,7 @@ struct FriendService {
     
     func acceptFriendRequest(user_id: Int, friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/friends/acceptFriendRequest")
+        let url = URL(string: "https://gamerspace.gg/api/friends/acceptFriendRequest")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -178,7 +178,7 @@ struct FriendService {
     }
     func deleteFriend(user_id: Int, friend_id: Int, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/friends/declineFriendRequest/\(user_id)/\(friend_id)")
+        let url = URL(string: "https://gamerspace.gg/api/friends/declineFriendRequest/\(user_id)/\(friend_id)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "DELETE"

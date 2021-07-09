@@ -79,7 +79,7 @@ struct GameService {
     
     func addFavoriteGame(slug: String, name: String, image: String, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/games/addGame")
+        let url = URL(string: "https://gamerspace.gg/api/games/addGame")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -119,7 +119,7 @@ struct GameService {
     }
     
     func getFavoriteGames(username: String, completionHander: @escaping ([GameDetail]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/games/getFavoriteGames/\(username)")
+        let url = URL(string: "https://gamerspace.gg/api/games/getFavoriteGames/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         //request.addValue("Client-ID: 4zqb31s928lpqyh3c9j75a0ggaezy4", forHTTPHeaderField: "application/vnd.twitchtv.v5+json")

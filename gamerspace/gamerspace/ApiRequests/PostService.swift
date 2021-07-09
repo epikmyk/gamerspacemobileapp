@@ -10,7 +10,7 @@ import Foundation
 struct PostService {
     
     func getUserPostsAndFriendsPosts(callback: @escaping ([Post]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/posts/getUserPostsAndFriendsPosts")
+        let url = URL(string: "https://gamerspace.gg/api/posts/getUserPostsAndFriendsPosts")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -43,7 +43,7 @@ struct PostService {
     }
     
     func getUserPosts(username: String, completionHandler: @escaping ([Post]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/posts/getRecentPostsToUser/\(username)")
+        let url = URL(string: "https://gamerspace.gg/api/posts/getRecentPostsToUser/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -72,21 +72,26 @@ struct PostService {
         task.resume()
     }
     
-    func createPost(post: String, html: String, userReceiverId: Int, completionHandler: @escaping (Confirmation) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/posts/createPost")
+    func createPost(post: String, image: String, userReceiverId: Int, completionHandler: @escaping (Confirmation) -> Void) {
+        let url = URL(string: "https://gamerspace.gg/api/posts/createPost")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
         // Parameters to be used for http request
         var body: [String: Any]
+        /*
         if html == "" {
             body = ["post": "\(post)" ,"user_receiver_id":"\(userReceiverId)"]
             
         }
         else {
             body = ["post": "\(html)", "user_receiver_id":"\(userReceiverId)"]
-        }
+        }*/
+        
+        print("POST IS: \(post)")
+        body = ["post": "\(post)", "image":"\(image)" , "user_receiver_id":"\(userReceiverId)"]
+        
         
         request.httpBody = body.percentEncoded()
         

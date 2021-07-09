@@ -10,7 +10,7 @@ import Foundation
 struct UserService {
     
     func searchUsers(username: String, completionHander: @escaping ([User]) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/users/search/\(username)")
+        let url = URL(string: "https://gamerspace.gg/api/users/search/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -40,7 +40,7 @@ struct UserService {
     }
     
     func getLoggedInUser(completionHander: @escaping (User) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/users/getLoggedInUser")
+        let url = URL(string: "https://gamerspace.gg/api/users/getLoggedInUser")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -70,7 +70,7 @@ struct UserService {
     }
     
     func getUser(username: String, completionHander: @escaping (User) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/users/getUser/\(username)")
+        let url = URL(string: "https://gamerspace.gg/api/users/getUser/\(username)")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -103,7 +103,7 @@ struct UserService {
     
     func createAccount(email: String, username: String, password: String, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/users/register")
+        let url = URL(string: "https://gamerspace.gg/api/users/register")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -141,7 +141,7 @@ struct UserService {
     
     func logIn(username: String, password: String, completionHandler: @escaping (Confirmation) -> Void) {
         
-        let url = URL(string: "http://104.236.83.241/api/users/login")
+        let url = URL(string: "https://gamerspace.gg/api/users/login")
         guard let requestUrl = url else { fatalError()}
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -179,7 +179,7 @@ struct UserService {
     }
     
     func logout(completionHandler: @escaping (Confirmation) -> Void) {
-        let url = URL(string: "http://104.236.83.241/api/users/logout")
+        let url = URL(string: "https://gamerspace.gg/api/users/logout")
         guard let requestUrl = url else { fatalError() }
         // Prepare URL Request Object
         var request = URLRequest(url: requestUrl)
